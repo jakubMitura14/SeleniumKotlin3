@@ -12,7 +12,9 @@ class CreateVirtualMeetingsInForAllClassrooms(val classroomTitle: String,
                                               val meeteingsDataList: List<infoFrorInterActiveMeetingCreation?>) : Section(
 {    listOf<SubSection>( getIntoSubject(classroomTitle), *meeteingsDataList.map { meetingDat ->
         // creating big blue button meeting for each time we meet
-        listOf(createVideoConference("${meetingDat!!.startTime} $classroomTitle", startAndEndDateTime(meetingDat.startTime,meetingDat.endTime))
+   println("***********************************************************************************************************************")
+    println(classroomTitle)
+    listOf(createVideoConference("${meetingDat!!.startTime} $classroomTitle", startAndEndDateTime(meetingDat.startTime,meetingDat.endTime))
         )
     }.flatten().toTypedArray())
 

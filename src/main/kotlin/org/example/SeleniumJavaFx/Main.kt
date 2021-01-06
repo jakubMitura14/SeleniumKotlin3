@@ -56,11 +56,9 @@ class Main : Application() {
 
         DriveManag
         AppsScriptConnection
-
         preapreGoogleServices()
-
-
-     //   uploadEscelToGoogleSheets("tefffffffsst", "/home/jakub/Downloads/Genetics sem1 Lectures Nur A Nur B NurC Winter 2020for beta_17.10.2020 (2).xlsx")
+       // MainFunction.driver
+        //uploadEscelToGoogleSheets("tefffffffsst", "/home/jakub/Downloads/Genetics sem1 Lectures Nur A Nur B NurC Winter 2020for beta_17.10.2020 (2).xlsx")
 
 
 //        GlobalScope.launch { for (i in 1..500) {
@@ -69,15 +67,15 @@ class Main : Application() {
 //   AppsScriptConnection.runAppScripFunction("createSubPresentations", linkedMapOf(), "MRugS1sx-c1AqbUXv8VS5X8vMQXSGRMYb")
 //       }
 //    }
-
+//
        GlobalScope.launch {
-       //    createTasksOnTheBasisOfData ()
+        createTasksOnTheBasisOfData ()
 
            for (i in 1..500) {
-          //    AppsScriptConnection.runAppScripFunction("iterateAndAddDataAboutImagesAndFaq", linkedMapOf(), librariesIds.coordinateCalendar)
-               AppsScriptConnection.runAppScripFunction("iterateAndAddDataAboutOpenQAndVideo", linkedMapOf(), librariesIds.coordinateCalendar)
+               AppsScriptConnection.runAppScripFunction("iterateAndAddDLinkOfSummarizingSpreadsheet", linkedMapOf(), librariesIds.coordinateCalendar)
+//             AppsScriptConnection.runAppScripFunction("iterateAndAddDataAboutImagesAndFaq", linkedMapOf(), librariesIds.coordinateCalendar)
+//               AppsScriptConnection.runAppScripFunction("iterateAndAddDataAboutOpenQAndVideo", linkedMapOf(), librariesIds.coordinateCalendar)
 //               AppsScriptConnection.runAppScripFunction("iterateAndAddDataAboutClosedQ", linkedMapOf(), librariesIds.coordinateCalendar)
-//               AppsScriptConnection.runAppScripFunction("iterateAndAddDataAboutImagesAndFaq", linkedMapOf(), librariesIds.coordinateCalendar)
 //               AppsScriptConnection.runAppScripFunction("addWhyImportantInfo", linkedMapOf(), librariesIds.coordinateCalendar)
 
 //
@@ -145,21 +143,21 @@ class Main : Application() {
 //        MainFunction.processSection(it)
 //    }}
 
-
-GlobalScope.launch {
-    val listOFDat = createPassiveSzkolenies()
-    println("lllllllllllllllllllll  "+ listOFDat.flatMap{it.subModulesToAdd})
-
-    listOf( LoginSection(),*listOFDat.toTypedArray()).forEach {
-        MainFunction.processSection(it)
-    }}
-
 //
+//GlobalScope.launch {
+//    val listOFDat = createPassiveSzkolenies()
+//    println("lllllllllllllllllllll  "+ listOFDat.flatMap{it.subModulesToAdd})
+//
+//    listOf( LoginSection(),*listOFDat.toTypedArray()).forEach {
+//        MainFunction.processSection(it)
+//    }}
+
+
 //GlobalScope.launch {
 //    listOf( LoginSection(),*createInteractiveMeetings () .toTypedArray()).forEach {
 //        MainFunction.processSection(it)
 //    }}
-//
+
 //        GlobalScope.launch {
 //            listOf(LoginSection(), *createInteractiveTasksLessons().toTypedArray()).forEach {
 //                MainFunction.processSection(it)

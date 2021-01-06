@@ -20,7 +20,6 @@ private suspend fun getListOfRelevantClassroomData() : List<classroomData?>{
             .map {row ->
                 if(row.size>7)  println(row[7])
                  if(row.size>20){
-                     println("passed")
                     classroomData(classroomName= row[7], classroomCode = row[15],presentationFolderLink = row[16], isOrganizational= row[5]!="normal",
                     isOnline = row[18].toString()=="1", assecoGroupAlfa = row[19].split(";").filter { it.length>3 }
                             , assecoGroupBeta = row[20].split(";").filter { it.length>3 }

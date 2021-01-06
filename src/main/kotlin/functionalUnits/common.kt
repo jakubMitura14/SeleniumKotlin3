@@ -431,7 +431,7 @@ fun createNewTopicInSzkolenie(tematTitle: String, numberOfTabsToPassATopic: Int,
                     Step.sendKeysToDummy("", 2),
                     Step.sendKeysToRobot(listOf(KeyEvent.VK_ENTER), 1)).forEach { MainFunction.processStep(it) }
                                    }
-                if(isCreatedNow || (MainFunction.driver.pageSource.filter {it.isLetterOrDigit()  }.replace(titlee, "XX ${titlee.filter { it.isLetterOrDigit()                                                            }} XX").split(titlee) .size)>=3){
+                if(isCreatedNow || (MainFunction.driver.pageSource.filter {it.isLetterOrDigit()  }.split(titlee.filter { it.isLetterOrDigit()}) .size)>=3){
 
 
                     listOf(
@@ -474,23 +474,37 @@ fun createVideoConference(subModuleTitle: String, dates: startAndEndDateTime) : 
     // publishing it 20 minutes after the main lesson
     //dates.startDate= dates.startDate.toInstant(TimeZone.UTC).plus(20, DateTimeUnit.MINUTE, TimeZone.currentSystemDefault()).toLocalDateTime(TimeZone.currentSystemDefault())
 val titlee = subModuleTitle + " meeting"
+    println(titlee)
+    println (formatDateToAsseco(dates.startDate.date))
+    println (formatHourString(dates.startDate.hour,dates.startDate.minute))
+    println (formatDateToAsseco(dates.endDate.date))
+    println (formatHourString(dates.endDate.hour,dates.endDate.minute))
+
     return     SubSection(listOf(
-            Step.click(selectingString = "div.btn-group:nth-child(2) > button:nth-child(1)", checking = Checking.dummy()),
-            Step.specialFunct({ driver -> Thread.sleep(3000) }),
-            Step.sendKeysToRobot(listOf(KeyEvent.VK_ENTER), 15),
-            Step.specialFunct({ driver -> Thread.sleep(3000) }),
-
-            Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(titlee)!!.toList(), 0),
-
-            Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(formatDateToAsseco(dates.startDate.date))!!.toList(), 2),
-            Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(formatHourString(dates.startDate.hour,dates.startDate.minute))!!.toList(), 1)
-            , Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(formatDateToAsseco(dates.endDate.date))!!.toList(), 1),
-            Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(formatHourString(dates.endDate.hour,dates.endDate.minute))!!.toList(), 1),
-            Step.sendKeysToRobot(listOf(KeyEvent.VK_ENTER), 0),
-            Step.sendKeysToRobot(listOf(KeyEvent.VK_ENTER), 0),
-            Step.specialFunct({ driver -> Thread.sleep(5000) }),
-            Step.navigation(perform = Perform.refreshWebsite()),
-            Step.specialFunct({ driver -> Thread.sleep(5000) }),
+//            Step.click(selectingString = "div.btn-group:nth-child(2) > button:nth-child(1)", checking = Checking.dummy()),
+//            Step.specialFunct({ driver -> Thread.sleep(3000) }),
+//            Step.sendKeysToRobot(listOf(), 15),
+//            Step.specialFunct({ driver -> Thread.sleep(10000) }),
+//
+//            Step.specialFunct({ driver -> Thread.sleep(3000) }),
+//
+//            Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(titlee)!!.toList(), 0),
+//
+//            Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(formatDateToAsseco(dates.startDate.date))!!.toList(), 2),
+//            Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(formatHourString(dates.startDate.hour,dates.startDate.minute))!!.toList(), 1)
+//            , Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(formatDateToAsseco(dates.endDate.date))!!.toList(), 1),
+//            Step.sendKeysToRobotWithKeyboardUtil(Keyboard().strToInts(formatHourString(dates.endDate.hour,dates.endDate.minute))!!.toList(), 1),
+//
+//            Step.sendKeysToRobot(listOf(KeyEvent.VK_SPACE), 3),
+//
+//            Step.sendKeysToRobot(listOf(KeyEvent.VK_SPACE,KeyEvent.VK_DOWN,KeyEvent.VK_DOWN), 1),
+//            Step.specialFunct({ driver -> Thread.sleep(90000) }),
+//
+//            //Step.sendKeysToRobot(listOf(KeyEvent.VK_ENTER), 4),
+//
+//            Step.specialFunct({ driver -> Thread.sleep(3000) }),
+//            Step.navigation(perform = Perform.refreshWebsite()),
+//            Step.specialFunct({ driver -> Thread.sleep(5000) }),
 
 
             ), Repair.refreshSiteAndStartOver(), preCheck= PreCheck.isThereSuchText(titlee))

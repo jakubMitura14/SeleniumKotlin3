@@ -26,7 +26,7 @@ val meetIngDatesId="1WxcssYS_TuoW1LFvZfsw8uZNephpcMsWu7uQDkOw4yY"
 
     val allData =getAllData(meetIngDatesId, classroomName).drop(1)
 
-    val subModulesDateMap : SortedMap<LocalDate, List<SubModulesData>>  =  allData.map { row->row[3] }.distinct() // deting all  non distinck dates
+    val subModulesDateMap : SortedMap<LocalDate, List<SubModulesData>>  =  allData.filter { it.size>2 }.map { row->row[3] }.distinct() // deting all  non distinck dates
        .filter { dateStr -> dateStr!= "#N" && dateStr.isNotEmpty() && dateStr.split("/").none { it.isBlank() }  &&  dateStr.split("/").none {it== "#N" }}
          .mapIndexed { indexOfWhichDate, dateStr->
                println("loc ${dateStr}" )
@@ -248,7 +248,7 @@ val res = classroomDataAboutSubModulesPerDate(classroomName, subModulesDateMap)
      */
     fun  getIndexesOfThissMeeting(dateStr: String, allDat: List<List<String>>) : List<Int>{
 
-        val res =  allDat.map{ row->row[3]}.filter{ it-> it!=null && it!=""}
+        val res =  allDat.filter {  it.size>2}.map{ row->row[3]}.filter{ it-> it!=null && it!=""}
             .mapIndexed { index, innerDateStr -> if(innerDateStr== dateStr){  index } else{-5}
                            }.filter { it-> it>-1}// as we marked that in case it is irrelevant it is -5
 
